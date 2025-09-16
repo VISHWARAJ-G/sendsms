@@ -1,5 +1,5 @@
 
-# Ex.No:6 Design an android application Send SMS using Intent.
+# Ex.No:3 Design an android application Send SMS using Intent.
 
 
 ## AIM:
@@ -30,14 +30,59 @@ Step 7: Save and run the application.
 ```
 /*
 Program to create and design an android application Send SMS using Intent.
-Developed by:
-Registeration Number :
+Developed by : VISHWARAJ G
+Registeration Number : 212223220125
 */
+package com.example.smsapplication;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText phoneBox, messageBox;
+    Button sendBtn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        phoneBox = findViewById(R.id.editText1);
+        messageBox = findViewById(R.id.editText2);
+        sendBtn = findViewById(R.id.button);
+
+        sendBtn.setOnClickListener(v -> {
+            String phoneNo = phoneBox.getText().toString();
+            String message = messageBox.getText().toString();
+
+            Uri uri = Uri.parse("smsto:" + phoneNo);
+
+            Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+            intent.putExtra("sms_body", message);
+            startActivity(intent);
+        });
+    }
+}
 ```
 
 ## OUTPUT
 
+#### Coding Part
+![alt text](Output_Images/Coding_Part.png)
 
+#### Design Part
+![alt text](Output_Images/Design_Part.png)
+
+#### App
+![alt text](Output_Images/App.jpg)
+
+#### SMS App
+![alt text](Output_Images/Chat_App.jpg)
 
 ## RESULT
 Thus a Simple Android Application create and design an android application Send SMS using Intent using Android Studio is developed and executed successfully.
